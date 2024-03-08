@@ -1,8 +1,8 @@
-const msgs = [
-    { msg: "Hello World" },
-    { msg: "Blah Blah" },
-    { msg: "I love cats" }
-];
+const BASE_URL = "https://next-gen-messenger.onrender.com";
+
+fetch(`${BASE_URL}/msg/getAll`)
+    .then(response => response.json())
+    .then(updateMessages);
 
 function buildListItem(text) {
     const listItem = document.createElement("li");
@@ -10,9 +10,8 @@ function buildListItem(text) {
     return listItem;
 }
 
-function update(messages) {
+function updateMessages(messages) {
     const container = document.getElementById("messages");
-    const newChildren = messages.map(message => buildListItem(message.msg));
-    container.replaceChildren(...newChildren);
+    container.replaceChildren(...messages.map(buildListItem));
 }
 
