@@ -1,6 +1,6 @@
-const express = require('express');
-const { testHandler } = require('./testHandler');
-const { getCount, incrementCount } = require('./cptHandler');
+import express from 'express';
+import { testHandler } from './testHandler.js';
+import { getCount, incrementCount } from './cptHandler.js';
 const app = express();
 
 // Pour s'assurer que l'on peut faire des appels AJAX au serveur
