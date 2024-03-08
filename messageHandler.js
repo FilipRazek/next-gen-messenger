@@ -17,3 +17,23 @@ export function getSingleMessage(req, res) {
     // Le code de retour est alors 1 en cas d'erreur
     res.json({ code: 1 });
 }
+
+export function getMessageCount(req, res) {
+    res.json(allMsgs.length);
+}
+
+export function getAllMessages(req, res) {
+    res.json(allMsgs);
+}
+
+export function addMessage(req, res) {
+    // On dévie légèrement de l'énoncé pour
+    // permettre un POST pour l'ajout de message
+    const { msg } = req.body;
+    if (msg) {
+        allMsgs.push(msg);
+        res.json({ code: 0, index: allMsgs.length - 1});
+    } else {
+        res.json({ code: 1 });
+    }
+}
