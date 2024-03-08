@@ -15,6 +15,7 @@ function buildListItem(text) {
 function updateMessages(messages) {
     const container = document.getElementById("messages");
     container.replaceChildren(...messages.map(buildListItem));
+    container.scrollTop = container.scrollHeight;
 }
 
 function sendMessage() {
