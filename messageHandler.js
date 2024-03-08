@@ -1,8 +1,6 @@
-const allMsgs = ["Hello World", "foobar", "CentraleSupelec Forever"]
+import { isPositiveInteger } from "./utils.js";
 
-function isPositiveInteger(value) {
-    return value.match(/^[0-9]+$/);
-}
+const allMsgs = ["Hello World", "foobar", "CentraleSupelec Forever"]
 
 export function getSingleMessage(req, res) {
     const { id } = req.params;

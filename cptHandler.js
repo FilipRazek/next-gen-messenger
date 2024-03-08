@@ -1,11 +1,9 @@
+import { isPositiveInteger } from './utils.js';
+
 const state = { count: 0 };
 
 export function getCount(req, res) {
     res.json({ count: state.count });
-}
-
-function isPositiveInteger(value) {
-    return value.match(/^[0-9]+$/);
 }
 
 export function incrementCount(req, res) {
