@@ -1,7 +1,10 @@
 {
-"name": "next-gen-messenger",
-"type": "module",
-  "dependencies": {
-    "express": "^4.18.3"
-  }
+    "name": "next-gen-messenger",
+    "type": "module",
+    "dependencies": {
+        "express": "^4.18.3"
+    },
+    "scripts": {
+        "start": "node index.js"
+    }
 }
