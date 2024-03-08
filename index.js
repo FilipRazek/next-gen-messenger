@@ -8,6 +8,11 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.get('/test/*', function(req, res) {
+  const PREFIX_LENGTH = 6;
+  res.json({ msg: req.url.slice(PREFIX_LENGTH) });
+});
+
 const PORT = 8080;
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}...`);
