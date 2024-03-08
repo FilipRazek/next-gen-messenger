@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class=banner>
+        <h1>OufMessages.com</h1>
+    </div>
+    <section class=message-container>
+        <ul id="messages">
+            <li>Message 1</li>
+            <li>Message 2</li>
+            <li>Message 3</li>
+            <li>Message 4</li>
+            <li>Message 5</li>
+        </ul>
+        <div id="form">
+            <div id=text-message-area>
+                <textarea placeholder="New message..."></textarea>
+            </div>
+            <div id=button-area>
+                <button onclick="update(msgs);"><img src="./send.svg"></button>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
