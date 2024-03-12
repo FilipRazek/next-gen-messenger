@@ -1,6 +1,7 @@
 import { isPositiveInteger } from "./utils.js";
+import { getSentimentScore } from "./sentimentAnalysis.js";
 
-const allMsgs = ["Hello World", "foobar", "CentraleSupelec Forever"]
+const allMsgs = [{ msg: "Hello World", sentimentScore: 0 }, { msg: "foobar", sentimentScore: 0 }, { msg: "CentraleSupelec Forever", sentimentScore: 0 }]
 
 export function getSingleMessage(req, res) {
     const { id } = req.params;
@@ -31,8 +32,9 @@ export function addMessage(req, res) {
     // permettre un POST pour l'ajout de message
     const { msg } = req.body;
     if (msg) {
-        allMsgs.push(msg);
-        res.json({ code: 0, index: allMsgs.length - 1});
+        const sentimentScore = getSentimentScore(msg);
+        allMsgs.push({ msg, sentimentScore });
+        res.json({ code: 0, index: allMsgs.length - 1 });
     } else {
         res.json({ code: 1 });
     }

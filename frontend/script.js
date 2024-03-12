@@ -1,4 +1,4 @@
-const BASE_URL = "https://next-gen-messenger.onrender.com";
+const BASE_URL = "http://localhost:8080";
 
 function fetchMessages() {
     fetch(`${BASE_URL}/msg/getAll`)
@@ -6,9 +6,15 @@ function fetchMessages() {
         .then(updateMessages);
 }
 
-function buildListItem(text) {
+function buildListItem({ msg, sentimentScore }) {
     const listItem = document.createElement("li");
-    listItem.innerText = text;
+    listItem.innerText = msg;
+    const newClass = sentimentScore > 0
+        ? 'messagePositiv'
+        : sentimentScore == 0
+            ? 'messageNeutral'
+            : 'messageNegativ';
+    listItem.classList.add(newClass);
     return listItem;
 }
 
@@ -29,7 +35,7 @@ function sendMessage() {
         body: JSON.stringify({ msg: message })
     })
         .then(response => response.json())
-        .then(({code}) => {
+        .then(({ code }) => {
             if (code === 0) {
                 fetchMessages();
                 messageInput.value = "";
