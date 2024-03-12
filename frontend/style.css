@@ -3,6 +3,8 @@
     --primary-color: #8d99ae;
     --secondary-color: #ef233c;
     --font-color: #edf2f4;
+    --positive-color: green;
+    --negative-color: red;
 }
 
 body {
@@ -48,7 +50,6 @@ section.message-container {
 }
 
 #messages li {
-    
     color: var(--font-color);
     margin-top: 10px;
     padding: 12px 20px;
@@ -58,7 +59,7 @@ section.message-container {
 }
 
 .messagePositiv {
-    background-color:green;
+    background-color: var(--positive-color);
 }
 
 .messageNeutral {
@@ -66,7 +67,7 @@ section.message-container {
 }
 
 .messageNegativ {
-    background-color:red;
+    background-color: var(--negative-color);
 }
 
 #messages li:hover {

@@ -6,23 +6,19 @@ function fetchMessages() {
         .then(updateMessages);
 }
 
-function buildListItem(message) {
+function buildListItem({ msg, sentimentScore }) {
     const listItem = document.createElement("li");
-    listItem.innerText = message.msg;
-    let newClass;
-    if (message.sentimentScore > 0) {
-        newClass = 'messagePositiv';
-    } else if (message.sentimentScore == 0) {
-        newClass = 'messageNeutral';
-    }else if (message.sentimentScore < 0){
-        newClass = 'messageNegativ';
-    }
+    listItem.innerText = msg;
+    const newClass = sentimentScore > 0
+        ? 'messagePositiv'
+        : sentimentScore == 0
+            ? 'messageNeutral'
+            : 'messageNegativ';
     listItem.classList.add(newClass);
     return listItem;
 }
 
 function updateMessages(messages) {
-    console.log(messages);
     const container = document.getElementById("messages");
     container.replaceChildren(...messages.map(buildListItem));
     container.scrollTop = container.scrollHeight;
@@ -39,7 +35,7 @@ function sendMessage() {
         body: JSON.stringify({ msg: message })
     })
         .then(response => response.json())
-        .then(({code}) => {
+        .then(({ code }) => {
             if (code === 0) {
                 fetchMessages();
                 messageInput.value = "";
