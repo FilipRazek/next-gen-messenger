@@ -3,8 +3,10 @@
     --primary-color: #8d99ae;
     --secondary-color: #ef233c;
     --font-color: #edf2f4;
-    --positive-color: green;
-    --negative-color: red;
+    --positive-color: #eeee59;
+    --very-positive-color: #a9c74d;
+    --very-negative-color: #bf3701;
+    --negative-color: #c88501;
 }
 
 body {
@@ -58,16 +60,24 @@ section.message-container {
     display: inline-block;
 }
 
-.messagePositiv {
+.message-positiv {
     background-color: var(--positive-color);
 }
 
-.messageNeutral {
+.message-very-positiv {
+    background-color: var(--very-positive-color);
+}
+
+.message-neutral {
     background-color: var(--background-color);
 }
 
-.messageNegativ {
+.message-negativ {
     background-color: var(--negative-color);
+}
+
+.message-very-negativ {
+    background-color: var(--very-negative-color);
 }
 
 #messages li:hover {

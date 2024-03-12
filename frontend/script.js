@@ -9,11 +9,15 @@ function fetchMessages() {
 function buildListItem({ msg, sentimentScore }) {
     const listItem = document.createElement("li");
     listItem.innerText = msg;
-    const newClass = sentimentScore > 0
-        ? 'messagePositiv'
-        : sentimentScore == 0
-            ? 'messageNeutral'
-            : 'messageNegativ';
+    const newClass = sentimentScore > 2
+        ? 'message-very-positiv'
+        : sentimentScore > 0
+            ? 'message-positiv'
+            : sentimentScore == 0
+                ? 'message-neutral'
+                : sentimentScore < -2
+                    ? 'message-very-negativ'
+                    : 'message-negativ'
     listItem.classList.add(newClass);
     return listItem;
 }
