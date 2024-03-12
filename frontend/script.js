@@ -1,4 +1,4 @@
-const BASE_URL = "https://next-gen-messenger.onrender.com";
+const BASE_URL = "http://localhost:8080";
 
 function fetchMessages() {
     fetch(`${BASE_URL}/msg/getAll`)
@@ -6,13 +6,23 @@ function fetchMessages() {
         .then(updateMessages);
 }
 
-function buildListItem(text) {
+function buildListItem(message) {
     const listItem = document.createElement("li");
-    listItem.innerText = text;
+    listItem.innerText = message.msg;
+    let newClass;
+    if (message.sentimentScore > 0) {
+        newClass = 'messagePositiv';
+    } else if (message.sentimentScore == 0) {
+        newClass = 'messageNeutral';
+    }else if (message.sentimentScore < 0){
+        newClass = 'messageNegativ';
+    }
+    listItem.classList.add(newClass);
     return listItem;
 }
 
 function updateMessages(messages) {
+    console.log(messages);
     const container = document.getElementById("messages");
     container.replaceChildren(...messages.map(buildListItem));
     container.scrollTop = container.scrollHeight;

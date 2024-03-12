@@ -48,13 +48,25 @@ section.message-container {
 }
 
 #messages li {
-    background-color: var(--background-color);
+    
     color: var(--font-color);
     margin-top: 10px;
     padding: 12px 20px;
     border-radius: 15px;
     opacity: 0.9;
     display: inline-block;
+}
+
+.messagePositiv {
+    background-color:green;
+}
+
+.messageNeutral {
+    background-color: var(--background-color);
+}
+
+.messageNegativ {
+    background-color:red;
 }
 
 #messages li:hover {
