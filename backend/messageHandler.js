@@ -1,7 +1,8 @@
 import { isPositiveInteger } from "./utils.js";
 import { getSentimentScore } from "./sentimentAnalysis.js";
 
-const allMsgs = [{ msg: "Hello World", sentimentScore: 0 }, { msg: "foobar", sentimentScore: 0 }, { msg: "CentraleSupelec Forever", sentimentScore: 0 }]
+const allMsgs = [];
+init();
 
 export function getSingleMessage(req, res) {
     const { id } = req.params;
@@ -27,13 +28,22 @@ export function getAllMessages(req, res) {
     res.json(allMsgs);
 }
 
+function addMessageToList(msg) {
+    const sentimentScore = getSentimentScore(msg);
+    allMsgs.push({ msg, sentimentScore });
+}
+
+function init() {
+    const initialMessages = ["Welcome to NextGenMessenger.com!", "Try sending a message to see how it renders", "Negative messages render in red:", "I hate this website!", "Positive messages render in green:", "I love this website!"];
+    initialMessages.forEach(addMessageToList);
+}
+
 export function addMessage(req, res) {
     // On dévie légèrement de l'énoncé pour
     // permettre un POST pour l'ajout de message
     const { msg } = req.body;
     if (msg) {
-        const sentimentScore = getSentimentScore(msg);
-        allMsgs.push({ msg, sentimentScore });
+        addMessageToList(msg);
         res.json({ code: 0, index: allMsgs.length - 1 });
     } else {
         res.json({ code: 1 });
