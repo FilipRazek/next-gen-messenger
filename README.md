@@ -1,6 +1,6 @@
-# NextGenMessenger.com
+# Messenger.next-gen.LOL
 
-This service is up and running [here](https://next-gen-messenger-frontend.onrender.com/) :rocket:!
+This service is up and running [here](https://messenger.next-gen.lol/) :rocket:!
 
 ## Context
 
